@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Binary by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Count Controll System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="/" class="logo"><strong>C</strong>OUNT<strong>C</strong>ONTROLL<strong>S</strong>YSTEM</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Live Status</a></li>
+					<li><a href="/export">Export Data</a></li>
+					<li><a href="/setting">Setting</a></li>
+					<li><a href="/network">Network</a></li>
+					<li><a href="/restart">Reboot</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+		<div class="m-5">
+			<form id="infoform" action="/toCsv" method="POST">
+				<div class="row">
+					<div class="col-md-6">
+						<h4>Start DateTime</h4>
+						<div id="StartDP" name="StartTime"></div>
+					</div>
+					<div class="col-md-6">
+						<h4>End DateTime</h4>
+						<div id="EndDP" name="EndTime"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Select Sensor</h4>
+					</div>
+					<div class="row mb-2">
+						{% for sensor in sensors%}
+						<div class="col-md-6">
+							<input type="checkbox" id="t{{sensor['GPIO']}}" name="GPIO{{sensor['GPIO']}}" checked/>
+							<label for="t{{sensor['GPIO']}}">{{sensor['Name']}} :: GPIO{{sensor['GPIO']}}</label>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="submit" value="Exporting Data" class="special w-100" />
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					System by &copy; Bluzen Pte, Ltd
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+				var jb = jQuery.noConflict();
+			</script>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript">
+				$(function () {
+		            $('#StartDP').datetimepicker({
+		                inline: true,
+		                sideBySide: true
+		            });
+		            $('#EndDP').datetimepicker({
+		                inline: true,
+		                sideBySide: true
+		            });
+
+		            $("#StartDP").on("change.datetimepicker", function (e) {
+			            $('#EndDP').datetimepicker('minDate', e.date);
+			        });
+			        $("#EndDP").on("change.datetimepicker", function (e) {
+			            $('#StartDP').datetimepicker('maxDate', e.date);
+			        });
+
+			        $("#infoform").bind("submit",function(){
+			        	sensors  = {};
+
+						$.each($('#infoform').serializeArray(), function() {
+    						sensors[this.name.toString()] = this.value;
+						});
+
+			        	var data = {
+			        		"sensors":JSON.stringify(sensors),
+			        		"StartTime":$('#StartDP').datetimepicker("viewDate").format("YYYY-MM-DD HH:mm"),
+			        		"EndTime":$('#EndDP').datetimepicker("viewDate").format("YYYY-MM-DD HH:mm")
+			        	};
+
+						jb.ajax({
+				            type     : "POST",
+				            cache    : false,
+				            url      : $(this).attr('action'),
+				            data     : data,
+				            success  : function(data) {
+				            	download(data, 'export.csv', 'text/csv');
+				            }
+				    	});
+						return false;
+					});
+		        });
+
+
+		        function download(strData, strFileName, strMimeType) {
+				    var D = document,
+				        A = arguments,
+				        a = D.createElement("a"),
+				        d = A[0],
+				        n = A[1],
+				        t = A[2] || "text/csv";
+
+				    //build download link:
+				    a.href = "data:" + strMimeType + "charset=utf-8," + escape(strData);
+
+
+				    if (window.MSBlobBuilder) { // IE10
+				        var bb = new MSBlobBuilder();
+				        bb.append(strData);
+				        return navigator.msSaveBlob(bb, strFileName);
+				    } /* end if(window.MSBlobBuilder) */
+
+
+
+				    if ('download' in a) { //FF20, CH19
+				        a.setAttribute("download", n);
+				        a.innerHTML = "downloading...";
+				        D.body.appendChild(a);
+				        setTimeout(function() {
+				            var e = D.createEvent("MouseEvents");
+				            e.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+				            a.dispatchEvent(e);
+				            D.body.removeChild(a);
+				        }, 66);
+				        return true;
+				    }; /* end if('download' in a) */
+
+
+
+				    //do iframe dataURL download: (older W3)
+				    var f = D.createElement("iframe");
+				    D.body.appendChild(f);
+				    f.src = "data:" + (A[2] ? A[2] : "application/octet-stream") + (window.btoa ? ";base64" : "") + "," + (window.btoa ? window.btoa : escape)(strData);
+				    setTimeout(function() {
+				        D.body.removeChild(f);
+				    }, 333);
+				    return true;
+				}
+			</script>
+	</body>
+</html>

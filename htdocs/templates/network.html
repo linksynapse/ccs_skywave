@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<!--
+	Binary by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Count Controll System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="/" class="logo"><strong>C</strong>OUNT<strong>C</strong>ONTROLL<strong>S</strong>YSTEM</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Live Status</a></li>
+					<li><a href="/export">Export Data</a></li>
+					<li><a href="/setting">Setting</a></li>
+					<li><a href="/network">Network</a></li>
+					<li><a href="/restart">Reboot</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+		<div class="m-5">
+			<div class="row">
+				<div class="col-md-6">
+					<h4>Setting Wire Connection</h4>
+					<div>
+						<form action="/setnwconfig" method="POST">
+							<div class="col-md-6 m-2">
+								<label for="ipaddr">IP Address</label>
+								<input type="text" id="ipaddr" name="ipaddr" placeholder="IP ADDRESS">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="netmask">Netmask</label>
+								<input type="text" id="netmask" name="netmask" placeholder="NETMASK">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="gateway">Gateway</label>
+								<input type="text" id="gateway" name="gateway" placeholder="GATEWAY">
+							</div>
+							<div class="col-md-12 m-2">
+								<input type="submit" value="Save">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					System by &copy; Bluzen Pte, Ltd
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+				var jb = jQuery.noConflict();
+			</script>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

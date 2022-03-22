@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<!--
+	Binary by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Count Controll System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="/" class="logo"><strong>C</strong>OUNT<strong>C</strong>ONTROLL<strong>S</strong>YSTEM</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Live Status</a></li>
+					<li><a href="/export">Export Data</a></li>
+					<li><a href="/setting">Setting</a></li>
+					<li><a href="/network">Network</a></li>
+					<li><a href="/restart">Reboot</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+		<div class="main mt-5 ml-5 mr-5">
+			<div class="row">
+				<div class="col-md-6">
+				<h4>System Resource usage</h4>
+				<table class="table table-bordered">
+					<thead>
+						<th>
+							Resource Name
+						</th>
+						<th>
+							Usage
+						</th>
+						<th>
+							Status
+						</th>
+					</thead>
+					<tbody id="Resource">
+					</tbody>
+				</table>
+				</div>
+				<div class="col-md-6">
+				<h4>Sensor Status</h4>
+				<table class="table table-bordered table-dark">
+					<tbody style="text-align: center;">
+						<tr>
+							<td style="width:50%">
+								3.3V
+							</td>
+							<td style="width:50%">
+								5V
+							</td>
+						</tr>
+						<tr>
+							<td id="2" style="width:50%">
+								GPIO2
+							</td>
+							<td style="width:50%">
+								5V
+							</td>
+						</tr>
+						<tr>
+							<td id="3" style="width:50%">
+								GPIO3
+							</td>
+							<td style="width:50%">
+								GND
+							</td>
+						</tr>
+						<tr>
+							<td id="4" style="width:50%">
+								GPIO4
+							</td>
+							<td id="14" style="width:50%">
+								GPIO14
+							</td>
+						</tr>
+						<tr>
+							<td style="width:50%">
+								GND
+							</td>
+							<td id="15" style="width:50%">
+								GPIO15
+							</td>
+						</tr>
+						<tr>
+							<td id="17" style="width:50%">
+								GPIO17
+							</td>
+							<td id="18" style="width:50%">
+								GPIO18
+							</td>
+						</tr>
+						<tr>
+							<td id="27" style="width:50%">
+								GPIO27
+							</td>
+							<td style="width:50%">
+								GND
+							</td>
+						</tr>
+						<tr>
+							<td id="22" style="width:50%">
+								GPIO22
+							</td>
+							<td id="23" style="width:50%">
+								GPIO23
+							</td>
+						</tr>
+						<tr>
+							<td style="width:50%">
+								3.3V
+							</td>
+							<td id="24" style="width:50%">
+								GPIO24
+							</td>
+						</tr>
+						<tr>
+							<td id="10" style="width:50%">
+								GPIO10
+							</td>
+							<td style="width:50%">
+								GND
+							</td>
+						</tr>
+						<tr>
+							<td id="9" style="width:50%">
+								GPIO9
+							</td>
+							<td id="25" style="width:50%">
+								GPIO25
+							</td>
+						</tr>
+						<tr>
+							<td id="11" style="width:50%">
+								GPIO11
+							</td>
+							<td id="8" style="width:50%">
+								GPIO8
+							</td>
+						</tr>
+						<tr>
+							<td style="width:50%">
+								GND
+							</td>
+							<td id="7" style="width:50%">
+								GPIO7
+							</td>
+						</tr>
+						<tr>
+							<td id="0" style="width:50%">
+								GPIO0
+							</td>
+							<td id="1" style="width:50%">
+								GPIO1
+							</td>
+						</tr>
+						<tr>
+							<td id="5" style="width:50%">
+								GPIO5
+							</td>
+							<td style="width:50%">
+								GND
+							</td>
+						</tr>
+						<tr>
+							<td id="6" style="width:50%">
+								GPIO6
+							</td>
+							<td id="12" style="width:50%">
+								GPIO12
+							</td>
+						</tr>
+						<tr>
+							<td id="13" style="width:50%">
+								GPIO13
+							</td>
+							<td style="width:50%">
+								GND
+							</td>
+						</tr>
+						<tr>
+							<td id="19" style="width:50%">
+								GPIO19
+							</td>
+							<td id="16" style="width:50%">
+								GPIO16
+							</td>
+						</tr>
+						<tr>
+							<td id="26" style="width:50%">
+								GPIO26
+							</td>
+							<td id="20" style="width:50%">
+								GPIO20
+							</td>
+						</tr>
+						<tr>
+							<td style="width:50%">
+								GND
+							</td>
+							<td id="21" style="width:50%">
+								GPIO21
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					System by &copy; Bluzen Pte, Ltd
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+				$(document).ready(function(){
+					AutoRefresh(5000);
+				});
+
+				function AutoRefresh(tick){
+					$.ajax({
+						type     : "GET",
+						cache    : false,
+						url      : "/getSysinfo",
+						success  : function(data) {
+				            var html = "";
+				            $.each(data.resource,function(key,value){	
+				                html += "<tr>";
+				                html +=	"<td>" + key.toUpperCase() + "</td>";
+				                if(key == "TEMP"){
+				                	html +=	"<td>" + value + "C</td>";
+				                }else{
+				                	html +=	"<td>" + value + "%</td>";
+				            	}
+				                if(key == "CPU"){
+				                	if(value >= 95){
+				                		html +=	"<td>FullLoad</td>";
+				                	}else{
+				                		html +=	"<td>Good</td>";
+				                	}
+				                }else if(key == "DISK"){
+									if(value >= 90){
+				                		html +=	"<td>Danger</td>";
+				                	}else if(value >= 70 && value < 90){
+				                		html +=	"<td>Warning</td>";
+				                	}else{
+				                		html +=	"<td>Good</td>";
+				                	}
+				                }else if(key == "RAM"){
+				                	if(value >= 90){
+				                		html +=	"<td>Warning</td>";
+				                	}else{
+				                		html +=	"<td>Good</td>";
+				                	}
+				                }else{
+				                	if(value >= 50){
+				                		html +=	"<td>Warning</td>";
+				                	}else{
+				                		html +=	"<td>Good</td>";
+				                	}
+				                }
+				                html += "</tr>";
+				            });
+							$("#Resource").html(html);
+
+							for (var i = 0; i < 30; i++) {
+								$("#" + i).removeAttr("style");
+								$("#" + i).attr("style","width:50%");
+								$("#" + i).html("GPIO" + i + "<br>Not Used");
+							}
+
+							$.each(data.sensor,function(i, item){
+				            	if(item.Active){
+				            		$("#"+item.GPIO).attr("style","background-color:green");
+				            		$("#"+item.GPIO).html("GPIO" + item.GPIO + "<br>" + item.Name);
+				            	}else{
+				            		$("#"+item.GPIO).attr("style","background-color:red");
+				            		$("#"+item.GPIO).html("GPIO" + item.GPIO + "<br>" + item.Name);
+				            	}
+				            });
+				    	}
+					});
+					setTimeout("AutoRefresh("+tick+")",tick);
+				}
+			</script>
+	</body>
+</html>

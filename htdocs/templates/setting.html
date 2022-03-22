@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<!--
+	Binary by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Count Controll System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="/" class="logo"><strong>C</strong>OUNT<strong>C</strong>ONTROLL<strong>S</strong>YSTEM</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Live Status</a></li>
+					<li><a href="/export">Export Data</a></li>
+					<li><a href="/setting">Setting</a></li>
+					<li><a href="/network">Network</a></li>
+					<li><a href="/restart">Reboot</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</nav>
+
+		<!-- Main -->
+		<div class="m-5">
+			<div class="row">
+				<div class="col-md-6">
+					<h4>HardWare Config</h4>
+					<div>
+						<form action="/sethwconfig" method="POST">
+							<div class="col-md-6 m-2">
+								<label for="device_name">Device Name</label>
+								<input type="text" id="device_name" name="device_name" value="{{config.DEVICE_NAME()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="bouncetime">BounceTime</label>
+								<input type="text" id="bouncetime" name="bouncetime" value="{{config.EDGE_BOUNCE()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="loglevel">Log Level</label>
+								<input type="text" id="loglevel" name="loglevel" value="{{config.LOG_LEVEL()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="loglevel">Web Login Password</label>
+								<input type="text" id="wPassword" name="wPassword" value="{{config.WEB_SERVER_PW()}}">
+							</div>
+							<div class="col-md-12 m-2">
+								<input type="submit" value="Save">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h4>Server Config</h4>
+					<div>
+						<form action="/setsvrconfig" method="POST">
+							<div class="col-md-6 m-2">
+								<label for="serverip">Web Server Bind ipaddress</label>
+								<input type="text" id="serverip" name="serverip" value="{{config.BIND_SERVER()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="serverport">Web Service Bind port</label>
+								<input type="text" id="serverport" name="serverport" value="{{config.BIND_PORT()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="ftpip">FTP Server Connect ipaddress</label>
+								<input type="text" id="ftpip" name="ftpip" value="{{config.FTP_SERVER_IP()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="ftpport">FTP Server Connect port</label>
+								<input type="text" id="ftpport" name="ftpport" value="{{config.FTP_SERVER_PORT()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="ftpid">FTP Server Connect ID</label>
+								<input type="text" id="ftpid" name="ftpid" value="{{config.FTP_SERVER_ID()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="ftppw">FTP Server Connect PW</label>
+								<input type="text" id="ftppw" name="ftppw" value="{{config.FTP_SERVER_PW()}}">
+							</div>
+							<div class="col-md-6 m-2">
+								<label for="ftpinterval">FTP Server transper interval</label>
+								<input type="text" id="ftpinterval" name="ftpinterval" value="{{config.FTP_SERVER_INTERVAL()}}">
+							</div>
+							<div class="col-md-12 m-2">
+								<input type="submit" value="Save">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<form action="/setsensor" method="POST">
+				<div class="col-md-12">
+					<h4>Select Sensor</h4>
+				</div>
+				<div class="row mb-2">
+						{% for sensor in sensors%}
+						<div class="col-md-6">
+							<input type="text" id="t{{sensor['GPIO']}}" name="GPIO{{sensor['GPIO']}}" value="{{sensor['Name']}}"/>
+							<label for="t{{sensor['GPIO']}}">GPIO{{sensor['GPIO']}}</label>
+						</div>
+						{% endfor %}
+						<div class="col-md-12 m-2">
+								<input type="submit" value="Save">
+						</div>
+				</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					System by &copy; Bluzen Pte, Ltd
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+				var jb = jQuery.noConflict();
+			</script>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
